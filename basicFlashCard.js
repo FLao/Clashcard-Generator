@@ -1,15 +1,9 @@
 var fs = require("fs");
+var inquirer = require("inquirer");
 
-var cardFront = process.argv[2];
-var cardBack = process.argv[3];
-
-var card = new BasicFlashCard(cardFront, cardBack);
-card.displayCardInfo();
-card.writeCardInfo();
-
-function BasicFlashCard(cardFront, cardBack) {
-    this.cardFront = cardFront;
-    this.cardBack = cardBack;
+function BasicFlashCard(front, back) {
+    this.cardFront = front;
+    this.cardBack = back;
 
     this.displayCardInfo = function() {
         console.log("Front: " + this.cardFront + " " + "Back: " + this.cardBack);
@@ -21,3 +15,30 @@ function BasicFlashCard(cardFront, cardBack) {
         fs.appendFile("basic.txt", writeCard); 
     }
 };
+
+function createCard() {
+    inquirer.prompt([
+        {
+            name: "front",
+            message: "Enter the front of the basic flashcard: "
+        }, {
+            name: "back",
+            message: "Enter the back of the basic flashcard: "
+        }, {
+            type: "confirm",
+            message: "Do you wish to add another basic flashcard?",
+            name: "continue",
+            default: true
+        }
+    ]).then(function(answers) {
+        var card = new BasicFlashCard(answers.front, answers.back);
+        card.writeCardInfo();
+
+        if(answers.continue === true)
+            createCard();
+        else
+            console.log("Please see basic.txt for your newly created flashcards.")
+    });
+}
+
+createCard();

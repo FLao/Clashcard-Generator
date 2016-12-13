@@ -1,5 +1,7 @@
 var fs = require("fs");
+var inquirer = require("inquirer");
 
+/*
 var cardCloze = process.argv[2];
 var cardText = process.argv[3];
 
@@ -7,11 +9,12 @@ var card = new ClozeFlashCard(cardCloze, cardText);
 card.displayCardInfo();
 card.writeCardInfo();
 console.log(card.displayClozeDeleted());
+*/
 
-function ClozeFlashCard(cardCloze, cardText) {
-    this.cardCloze = cardCloze;
-    this.cardText = cardText;
-    this.cardWhole = cardCloze + " " + cardText;
+function ClozeFlashCard(text, cloze) {
+    this.cardCloze = cloze;
+    this.cardText = text;
+    this.cardWhole = this.cardCloze + " " + this.cardText;
     
     this.displayCardInfo = function() {
         console.log("Cloze " + this.cardCloze + " " + "Text: " + this.cardText);
@@ -28,3 +31,39 @@ function ClozeFlashCard(cardCloze, cardText) {
     	return cloze;
     }
 };
+
+function createCard() {
+    inquirer.prompt([
+        {
+            name: "cloze",
+            message: "Enter the cloze part of the flashcard: "
+        }, {
+            name: "text",
+            message: "Enter the whole text of the flashcard: "
+        }, {
+            type: "confirm",
+            message: "Display cloze deleted flashcard?",
+            name: "display",
+            default: true
+        }, {
+            type: "confirm",
+            message: "Do you wish to add another cloze flashcard?",
+            name: "continue",
+            default: true
+        }
+    ]).then(function(answers) {
+        var card = new ClozeFlashCard(answers.text, answers.cloze);
+        card.writeCardInfo();
+
+        if(answers.display === true)
+        	console.log(card.displayClozeDeleted());
+
+        if(answers.continue === true)
+            createCard();
+        else
+            console.log("Please see cloze.txt for your newly created flashcards.")
+    });
+}
+
+createCard();
+
