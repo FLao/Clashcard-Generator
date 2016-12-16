@@ -3,3 +3,7 @@ Front: What state is the city Los Angeles in? Back: California
 Front: What is Katniss' last name? Back: Everdeen
 Front: What faction did Tris join in Divergent? Back: dauntless
 Front: In FFXIII series, who is the savior of souls? Back: Lightning
+Front: Carnivores eat what? Back: meat
+Front: In addition to meat, omnivores eat what? Back: plants
+Front: The sky is usually what color at night? Back: black
+Front: The water is usually what color seen during the day? Back: blue

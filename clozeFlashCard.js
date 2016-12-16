@@ -1,20 +1,10 @@
 var fs = require("fs");
 var inquirer = require("inquirer");
 
-/*
-var cardCloze = process.argv[2];
-var cardText = process.argv[3];
-
-var card = new ClozeFlashCard(cardCloze, cardText);
-card.displayCardInfo();
-card.writeCardInfo();
-console.log(card.displayClozeDeleted());
-*/
-
 function ClozeFlashCard(text, cloze) {
     this.cardCloze = cloze;
     this.cardText = text;
-    this.cardWhole = this.cardCloze + " " + this.cardText;
+    this.cardWhole = "{{c::" + this.cardCloze + "}}" + " " + this.cardText;
     
     this.displayCardInfo = function() {
         console.log("Cloze " + this.cardCloze + " " + "Text: " + this.cardText);
@@ -66,4 +56,3 @@ function createCard() {
 }
 
 createCard();
-

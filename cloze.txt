@@ -1,10 +1,10 @@
-Red and green apples
-Red and green apples
-California is the 31st state
-California is the 31st state
-Red and green apples
-Red and green apples
-California is the 31st state
-California is the 31st state
-Red and green apples
-Miranda rights is read by the arresting officer to the culprit
+{{c::West}} is the opposite of East
+{{c::North}} is the opposite of South
+{{c::Left}} is the opposite of Right
+{{c::Up}} is the opposite of Down
+{{c::San Francisco }} is where the 49ers are from.
+{{c::San Jose}} is where the Sharks are from.
+{{c::Los Angeles}} was the second Lyft market in the U.S.
+{{c::red}} ,green, and blue form the hex color scheme RGB
+{{c::0 }} is the only other number than 1 in binary
+{{c::modulo}} is the remainder portion of division
